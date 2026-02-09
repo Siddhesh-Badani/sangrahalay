@@ -23,22 +23,13 @@ export function SiteNavbar() {
     <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         {/* Brand */}
-        <Link href="/" className="font-display text-lg tracking-tight">
-          Sangrahalay
-        </Link>
+        <h1 className="font-display text-lg tracking-tight">
+          <strong>Siddhesh Badani</strong>
+        </h1>
 
         {/* Desktop Menu */}
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
-            {/* Simple link */}
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                asChild
-                className={navigationMenuTriggerStyle()}
-              >
-                <Link href="/sutra">Sūtra</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
 
             {/* Dropdown */}
             <NavigationMenuItem>
@@ -84,75 +75,8 @@ export function SiteNavbar() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-
-        {/* Mobile Menu Button */}
-        <div className="flex items-center gap-2 md:hidden">
-          <ModeToggle />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="border-t bg-background md:hidden">
-          <div className="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-3">
-            <Link
-              href="/sutra"
-              className="rounded-md px-2 py-2 hover:bg-muted"
-              onClick={() => setIsOpen(false)}
-            >
-              Sūtra
-            </Link>
-            <div className="px-2 py-2">
-              <div className="font-semibold">Browse</div>
-              <div className="ml-2 flex flex-col gap-1 mt-1">
-                <Link
-                  href="/vichar"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Vichār
-                </Link>
-                <Link
-                  href="/katha"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Kathā
-                </Link>
-                <Link
-                  href="/sangrah"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Saṅgrah
-                </Link>
-                <Link
-                  href="/pata"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Paṭa
-                </Link>
-              </div>
-            </div>
-            <Link
-              href="/about"
-              className="rounded-md px-2 py-2 hover:bg-muted"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
-          </div>
-        </div>
-      )}
-    </header>
+    </div>
+    </header>  
   );
 }
 

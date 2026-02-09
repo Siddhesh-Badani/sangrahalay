@@ -2,6 +2,7 @@ import "./globals.css";
 import { sahitya, alegreya } from "./fonts";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteNavbar } from "@/components/site-navbar";
+import ArchiveBackground from "@/components/archive-background";
 
 export default function RootLayout({
   children,
@@ -23,8 +24,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <ArchiveBackground>
             <SiteNavbar />
             {children}
+            </ArchiveBackground>
           </ThemeProvider>
         </body>
       </html>
