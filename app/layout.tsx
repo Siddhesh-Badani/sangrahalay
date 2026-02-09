@@ -1,7 +1,7 @@
 import "./globals.css";
 import { sahitya, alegreya } from "./fonts";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "@/components/mode-toggle";
+import { SiteNavbar } from "@/components/site-navbar";
 
 export default function RootLayout({
   children,
@@ -23,8 +23,8 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <SiteNavbar />
             {children}
-            <ModeToggle />
           </ThemeProvider>
         </body>
       </html>
