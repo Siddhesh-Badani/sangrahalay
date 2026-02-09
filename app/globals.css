@@ -1,26 +1,201 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ===== Sangrahalay: Global Essentials + shadcn theme ===== */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---- Brand palette (direct colors, for your own CSS hooks) ---- */
+  --paper: #f4efe9;
+  --parchment: #e9e0d6;
+
+  --ink: #1e1a16;
+  --text-muted: #5f544a;
+
+  --gold: #b59a5a;
+  --pink: #e45a8c;
+  --pink-soft: #f3b6cc;
+
+  /* ---- Fonts (provided by next/font variables on <html>) ---- */
+  --font-body: var(--font-alegreya);
+  --font-display: var(--font-alegreya);
+  --font-hindi: var(--font-sahitya);
+
+  /* ---- Radius (shadcn) ---- */
+  --radius: 0.625rem;
+
+  /* ---- shadcn semantic tokens (HSL triples for Tailwind v4) ---- */
+  /* Backgrounds */
+  --background: 33 33% 93%;        /* paper */
+  --foreground: 30 15% 10%;        /* ink */
+
+  --card: 33 33% 93%;
+  --card-foreground: 30 15% 10%;
+
+  --popover: 33 33% 93%;
+  --popover-foreground: 30 15% 10%;
+
+  /* Primary = antique gold */
+  --primary: 42 38% 53%;
+  --primary-foreground: 30 15% 10%;
+
+  /* Secondary / muted surfaces = parchment */
+  --secondary: 32 30% 88%;
+  --secondary-foreground: 30 15% 10%;
+
+  --muted: 32 30% 88%;
+  --muted-foreground: 29 12% 33%;
+
+  /* Accent = baby pink (used for subtle accents like hover bg) */
+  --accent: 338 72% 83%;
+  --accent-foreground: 30 15% 10%;
+
+  /* Destructive can stay default-ish */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  /* Borders and focus */
+  --border: 43 41% 64%;            /* gold-muted-ish */
+  --input: 43 41% 64%;
+  --ring: 338 72% 62%;             /* hot pink focus ring */
+
+  /* Optional: charts (keep simple / neutral) */
+  --chart-1: 42 38% 53%;
+  --chart-2: 338 72% 62%;
+  --chart-3: 29 12% 33%;
+  --chart-4: 32 30% 88%;
+  --chart-5: 30 15% 10%;
+
+  /* Optional: sidebar tokens (if you use shadcn sidebar) */
+  --sidebar: 33 33% 93%;
+  --sidebar-foreground: 30 15% 10%;
+  --sidebar-primary: 42 38% 53%;
+  --sidebar-primary-foreground: 30 15% 10%;
+  --sidebar-accent: 32 30% 88%;
+  --sidebar-accent-foreground: 30 15% 10%;
+  --sidebar-border: 43 41% 64%;
+  --sidebar-ring: 338 72% 62%;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Hindi utility */
+.font-hindi {
+  font-family: var(--font-hindi), serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base typography + your minimal link rules */
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: var(--font-body), serif;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), serif;
+  letter-spacing: -0.01em;
+}
+
+/* Links: quiet by default, hot pink on hover */
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+a:hover {
+  color: var(--pink);
+  border-bottom-color: var(--pink);
+}
+
+/* Selection */
+::selection {
+  background: var(--pink-soft);
+  color: var(--ink);
+}
+
+/* Simple nav hooks (non-shadcn) */
+.nav-item { color: var(--text-muted); }
+.nav-item:hover { color: var(--ink); }
+.nav-icon { color: var(--text-muted); }
+.nav-item:hover .nav-icon { color: var(--gold); }
+
+/* Tailwind v4 theme bridge for shadcn */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+}
+
+/* Keep dark mode */
+.dark {
+  --background: 30 15% 10%;
+  --foreground: 33 33% 93%;
+
+  --card: 30 15% 14%;
+  --card-foreground: 33 33% 93%;
+
+  --popover: 30 15% 14%;
+  --popover-foreground: 33 33% 93%;
+
+  --primary: 42 38% 53%;
+  --primary-foreground: 30 15% 10%;
+
+  --secondary: 30 12% 18%;
+  --secondary-foreground: 33 33% 93%;
+
+  --muted: 30 12% 18%;
+  --muted-foreground: 33 12% 70%;
+
+  --accent: 338 72% 30%;
+  --accent-foreground: 33 33% 93%;
+
+  --border: 30 12% 28%;
+  --input: 30 12% 28%;
+  --ring: 338 72% 62%;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
