@@ -107,7 +107,7 @@ function NavigationMenuViewport({
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
-          "origin-top-center bg-popover text-popover-foreground relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-[min(var(--radix-navigation-menu-viewport-width),calc(100vw-2rem))] overflow-hidden rounded-md border",
+          "origin-top-center bg-popover text-popover-foreground relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-[min(var(--radix-navigation-menu-viewport-width),calc(100vw-4rem))] overflow-hidden rounded-md border",
           "data-[state=open]:animate-in data-[state=open]:fade-in data-[state=open]:slide-in-from-top-2 data-[state=open]:duration-200 data-[state=open]:ease-out",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-top-2 data-[state=closed]:duration-150 data-[state=closed]:ease-in",
           className

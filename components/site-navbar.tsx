@@ -38,7 +38,7 @@ export function SiteNavbar() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Explore</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid w-[360px] gap-2 p-3">
+                <div className="grid w-[250px] gap-2 p-3">
                   <NavLink
                     href="/vichar"
                     title="Vichār"
