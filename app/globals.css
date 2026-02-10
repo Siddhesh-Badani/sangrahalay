@@ -199,3 +199,68 @@ a:hover {
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  html,
+  body,
+  body * {
+    transition-property: background-color, color, border-color, fill, stroke, box-shadow;
+    transition-duration: 320ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  body * {
+    transition-duration: 0ms !important;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 520ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.theme-wipe-left::view-transition-old(root),
+html.theme-wipe-left::view-transition-new(root),
+html.theme-wipe-right::view-transition-old(root),
+html.theme-wipe-right::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
+
+html.theme-wipe-left::view-transition-old(root) {
+  animation-name: none;
+}
+
+html.theme-wipe-left::view-transition-new(root) {
+  animation-name: theme-wipe-left;
+}
+
+html.theme-wipe-right::view-transition-old(root) {
+  animation-name: none;
+}
+
+html.theme-wipe-right::view-transition-new(root) {
+  animation-name: theme-wipe-right;
+}
+
+@keyframes theme-wipe-left {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes theme-wipe-right {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
