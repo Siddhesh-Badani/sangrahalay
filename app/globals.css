@@ -200,6 +200,24 @@ a:hover {
   }
 }
 
+@layer utilities {
+  .folio-prose > p:first-of-type::first-letter {
+    font-family: var(--font-display), serif;
+    font-size: 3.5rem;
+    line-height: 0.85;
+    float: left;
+    margin-right: 0.1em;
+    color: var(--gold);
+  }
+
+  .folio-prose blockquote {
+    border-left: 2px solid var(--gold);
+    padding-left: 1rem;
+    font-style: italic;
+    color: hsl(var(--muted-foreground));
+  }
+}
+
 html::after {
   content: "";
   position: fixed;

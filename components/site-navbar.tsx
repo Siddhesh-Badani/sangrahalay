@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import * as React from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
@@ -11,134 +10,184 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "./mode-toggle";
 
+const exploreItems = [
+  {
+    href: "/sutra",
+    title: "Sūtra",
+    descriptor: "aphorisms & condensed principles",
+  },
+  {
+    href: "/vichar",
+    title: "Vichār",
+    descriptor: "essays & intellectual observations",
+  },
+  {
+    href: "/katha",
+    title: "Kathā",
+    descriptor: "stories, parables & narrative",
+  },
+  {
+    href: "/itihas",
+    title: "Itihās",
+    descriptor: "historical & cultural inquiry",
+  },
+] as const;
+
+function isSectionPath(pathname: string) {
+  return exploreItems.some((item) => pathname === item.href || pathname.startsWith(`${item.href}/`));
+}
+
+function desktopNavItemClass(active = false) {
+  return cn(
+    "nav-item inline-flex h-auto items-center border-b px-0 py-1 text-sm transition-colors duration-150",
+    active
+      ? "border-b-[color:var(--gold)] text-foreground"
+      : "border-b-transparent text-muted-foreground hover:border-b-[color:var(--gold)] hover:text-foreground"
+  );
+}
+
+function exploreTriggerClass(active = false) {
+  return cn(
+    "nav-item h-auto rounded-none border-b px-0 py-1 text-sm font-normal shadow-none transition-colors duration-150",
+    "border-b-transparent !bg-transparent hover:!bg-transparent focus:!bg-transparent data-[state=open]:!bg-transparent data-[state=open]:hover:!bg-transparent data-[state=open]:focus:!bg-transparent",
+    "!text-muted-foreground hover:!text-foreground focus:!text-foreground data-[state=open]:!text-foreground",
+    "focus-visible:outline-none focus-visible:ring-0",
+    "[&_svg]:ml-1 [&_svg]:size-3 [&_svg]:text-muted-foreground hover:[&_svg]:text-[var(--gold)] data-[state=open]:[&_svg]:text-[var(--gold)]",
+    active ? "border-b-[color:var(--gold)]" : "hover:border-b-[color:var(--gold)] data-[state=open]:border-b-[color:var(--gold)]"
+  );
+}
+
 export function SiteNavbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const pathname = usePathname();
+  const exploreActive = isSectionPath(pathname);
 
   React.useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-        <h1 className="font-display text-lg tracking-tight">
-          <strong>Siddhesh Badani</strong>
-        </h1>
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 supports-[backdrop-filter]:bg-background/80 supports-[backdrop-filter]:backdrop-blur-sm">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3">
+        <Link href="/" className="leading-none">
+          <span className="block text-lg font-normal text-foreground">Sangrahalay</span>
+          <span className="mt-0.5 block font-hindi text-xs text-muted-foreground opacity-60">
+            संग्रहालय
+          </span>
+        </Link>
 
-        <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Explore</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="grid w-[250px] gap-2 p-3">
-                  <NavLink
-                    href="/sutra"
-                    title="Sūtra"
-                    desc="Following the thread until it leads somewhere true."
-                  />
-                  <NavLink
-                    href="/vichar"
-                    title="Vichār"
-                    desc="Thinking out loud before the ideas settle."
-                  />
-                  <NavLink
-                    href="/katha"
-                    title="Kathā"
-                    desc="Memory and imagination, turned into scenes."
-                  />
-                  <NavLink
-                    href="/itihas"
-                    title="Itihās"
-                    desc="My life, as it was — honest and unembellished."
-                  />
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+        <div className="hidden items-center gap-4 md:flex">
+          <NavigationMenu viewport={false}>
+            <NavigationMenuList className="gap-5">
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={exploreTriggerClass(exploreActive)}>
+                  Explore
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="w-[22rem] rounded-none border border-border/60 bg-background p-0 shadow-[2px_3px_8px_rgba(30,26,22,0.08)]">
+                  <div className="divide-y divide-border/70">
+                    {exploreItems.map((item) => (
+                      <ExploreMenuLink
+                        key={item.href}
+                        href={item.href}
+                        title={item.title}
+                        descriptor={item.descriptor}
+                      />
+                    ))}
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link href="/about">About</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link
+                  href="/archive"
+                  className={desktopNavItemClass(
+                    pathname === "/archive" || pathname.startsWith("/archive/")
+                  )}
+                  aria-current={pathname === "/archive" ? "page" : undefined}
+                >
+                  Archive
+                </Link>
+              </NavigationMenuItem>
 
-            <NavigationMenuItem>
-              <ModeToggle />
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+              <NavigationMenuItem>
+                <Link
+                  href="/about"
+                  className={desktopNavItemClass(pathname === "/about")}
+                  aria-current={pathname === "/about" ? "page" : undefined}
+                >
+                  About
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          <ModeToggle />
+        </div>
 
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="rounded-none border border-border/60 text-muted-foreground hover:bg-secondary hover:text-foreground md:hidden"
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isOpen}
           aria-controls="mobile-navigation"
           onClick={() => setIsOpen((open) => !open)}
         >
-          {isOpen ? <X /> : <Menu />}
+          {isOpen ? <X className="size-4" /> : <Menu className="size-4" />}
         </Button>
       </div>
 
       <div
         id="mobile-navigation"
         className={cn(
-          "overflow-hidden border-t transition-all duration-200 md:hidden",
-          isOpen ? "max-h-[36rem] opacity-100" : "max-h-0 opacity-0"
+          "overflow-hidden border-t border-border/70 bg-background transition-all duration-200 md:hidden",
+          isOpen ? "max-h-[40rem] opacity-100" : "max-h-0 opacity-0"
         )}
       >
-        <nav className="mx-auto flex max-w-5xl flex-col items-left gap-3 px-4 py-3 text-left">
-          <div>
-            <p className="px-3 pb-1 text-xs tracking-wide text-muted-foreground">Explore</p>
-            <MobileNavLink
-              href="/vichar"
-              title="Vichār"
-              desc="Short reflections and thinking in motion."
-              onSelect={() => setIsOpen(false)}
-            />
-            <MobileNavLink
-              href="/katha"
-              title="Kathā"
-              desc="Narratives, project journeys, lived arcs."
-              onSelect={() => setIsOpen(false)}
-            />
-            <MobileNavLink
-              href="/sangrah"
-              title="Saṅgrah"
-              desc="Curated collections and thematic groupings."
-              onSelect={() => setIsOpen(false)}
-            />
-            <MobileNavLink
-              href="/pata"
-              title="Paṭa"
-              desc="Raw scrolls, notes, fragments, marginalia."
-              onSelect={() => setIsOpen(false)}
-            />
+        <nav className="mx-auto max-w-6xl px-4 py-4">
+          <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            Explore
+          </p>
 
-            <div className="h-px w-2/3 bg-border" />
+          <div className="divide-y divide-border/70 border-y border-border/70">
+            {exploreItems.map((item) => (
+              <MobileExploreLink
+                key={item.href}
+                href={item.href}
+                title={item.title}
+                descriptor={item.descriptor}
+                active={pathname === item.href || pathname.startsWith(`${item.href}/`)}
+                onSelect={() => setIsOpen(false)}
+              />
+            ))}
+          </div>
 
-            <div className="py-4">
-              <Link
-                href="/about"
-                onClick={() => setIsOpen(false)}
-                className="w-full rounded-md px-3 py-2 text-center text-sm font-medium text-accent-foreground hover:text-accent-foreground transition-colors hover:bg-accent"
-              >
-                About
-              </Link>
+          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Link
+              href="/archive"
+              onClick={() => setIsOpen(false)}
+              className={desktopNavItemClass(
+                pathname === "/archive" || pathname.startsWith("/archive/")
+              )}
+            >
+              Archive
+            </Link>
 
-              <div className="py-3">
-                <ModeToggle />
-              </div>
-            </div>
+            <Link
+              href="/about"
+              onClick={() => setIsOpen(false)}
+              className={desktopNavItemClass(pathname === "/about")}
+            >
+              About
+            </Link>
+
+            <ModeToggle />
           </div>
         </nav>
       </div>
@@ -146,47 +195,73 @@ export function SiteNavbar() {
   );
 }
 
-function NavLink({
+function ExploreMenuLink({
   href,
   title,
-  desc,
+  descriptor,
 }: {
   href: string;
   title: string;
-  desc: string;
+  descriptor: string;
 }) {
   return (
-    <NavigationMenuLink asChild>
-      <Link
-        href={href}
-        className="block rounded-md p-3 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground"
-      >
-        <div className="font-display text-sm text-accent-foreground">{title}</div>
-        <p className="text-sm text-muted-foreground">{desc}</p>
-      </Link>
-    </NavigationMenuLink>
+    <Link
+      href={href}
+      className={cn(
+        "group/item block border-b-0 border-l-2 border-l-transparent px-4 py-3 transition-[background-color,border-color] duration-150 ease-out",
+        "hover:bg-accent/15 hover:border-l-[color:var(--gold)] focus-visible:bg-accent/15 focus-visible:border-l-[color:var(--gold)]",
+        "focus-visible:outline-none focus-visible:ring-0"
+      )}
+    >
+      <span className="block text-[15px] leading-snug text-foreground transition-colors duration-150 group-hover/item:text-[var(--pink)] group-focus-visible/item:text-[var(--pink)]">
+        {title}
+      </span>
+      <span className="mt-1 block font-hindi text-[12px] leading-snug italic text-muted-foreground">
+        {descriptor}
+      </span>
+    </Link>
   );
 }
 
-function MobileNavLink({
+function MobileExploreLink({
   href,
   title,
-  desc,
+  descriptor,
+  active,
   onSelect,
 }: {
   href: string;
   title: string;
-  desc: string;
+  descriptor: string;
+  active: boolean;
   onSelect: () => void;
 }) {
   return (
     <Link
       href={href}
       onClick={onSelect}
-      className="block rounded-md px-3 py-2 text-left no-underline outline-none transition-colors hover:bg-accent"
+      className={cn(
+        "group/mobile block border-b-0 border-l-2 px-3 py-3 transition-[background-color,border-color] duration-150",
+        active
+          ? "border-l-[color:var(--gold)] bg-secondary/40"
+          : "border-l-transparent hover:border-l-[color:var(--gold)] hover:bg-accent/10"
+      )}
     >
-      <div className="font-display text-sm text-accent-foreground">{title}</div>
-      <p className="text-sm text-muted-foreground">{desc}</p>
+      <span
+        className={cn(
+          "block text-[15px] leading-snug transition-colors duration-150",
+          active
+            ? "text-foreground"
+            : "text-foreground group-hover/mobile:text-[var(--pink)]"
+        )}
+      >
+        {title}
+      </span>
+      <span className="mt-1 block font-hindi text-[12px] leading-snug italic text-muted-foreground">
+        {descriptor}
+      </span>
     </Link>
   );
 }
+
+export default SiteNavbar;
