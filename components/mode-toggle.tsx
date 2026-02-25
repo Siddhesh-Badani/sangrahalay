@@ -9,41 +9,38 @@ import { Toggle } from "@/components/ui/toggle";
 export function ModeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
+  const isAnimatingRef = React.useRef(false);
 
   React.useEffect(() => {
     setMounted(true);
   }, []);
 
   const handleToggle = () => {
-    const isDark = resolvedTheme === "dark";
-    const nextTheme = isDark ? "light" : "dark";
-
-    if (typeof window === "undefined") {
-      setTheme(nextTheme);
-      return;
-    }
+    if (isAnimatingRef.current) return;
 
     const root = document.documentElement;
-    const transitionClass = isDark ? "theme-wipe-right" : "theme-wipe-left";
-    const docWithTransition = document as Document & {
-      startViewTransition?: (callback: () => void) => {
-        finished: Promise<void>;
-      };
-    };
+    const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (!docWithTransition.startViewTransition || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (prefersReducedMotion) {
       setTheme(nextTheme);
       return;
     }
 
-    root.classList.add(transitionClass);
-    const transition = docWithTransition.startViewTransition(() => {
-      setTheme(nextTheme);
-    });
+    isAnimatingRef.current = true;
+    root.classList.remove("theme-fade-in");
+    root.classList.add("theme-fade-out");
 
-    transition.finished.finally(() => {
-      root.classList.remove(transitionClass);
-    });
+    window.setTimeout(() => {
+      setTheme(nextTheme);
+      root.classList.remove("theme-fade-out");
+      root.classList.add("theme-fade-in");
+
+      window.setTimeout(() => {
+        root.classList.remove("theme-fade-in");
+        isAnimatingRef.current = false;
+      }, 300);
+    }, 200);
   };
 
   if (!mounted) return null;

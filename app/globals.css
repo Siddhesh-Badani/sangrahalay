@@ -200,67 +200,38 @@ a:hover {
   }
 }
 
-@layer base {
-  html,
-  body,
-  body * {
-    transition-property: background-color, color, border-color, fill, stroke, box-shadow;
-    transition-duration: 320ms;
-    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  }
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: hsl(var(--background));
+  opacity: 0;
+  z-index: 9999;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html,
-  body,
-  body * {
-    transition-duration: 0ms !important;
-  }
+html.theme-fade-out::after {
+  animation: theme-fade-out 700ms ease-in forwards;
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 520ms;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+html.theme-fade-in::after {
+  animation: theme-fade-in 700ms ease-out forwards;
 }
 
-html.theme-wipe-left::view-transition-old(root),
-html.theme-wipe-left::view-transition-new(root),
-html.theme-wipe-right::view-transition-old(root),
-html.theme-wipe-right::view-transition-new(root) {
-  mix-blend-mode: normal;
-}
-
-html.theme-wipe-left::view-transition-old(root) {
-  animation-name: none;
-}
-
-html.theme-wipe-left::view-transition-new(root) {
-  animation-name: theme-wipe-left;
-}
-
-html.theme-wipe-right::view-transition-old(root) {
-  animation-name: none;
-}
-
-html.theme-wipe-right::view-transition-new(root) {
-  animation-name: theme-wipe-right;
-}
-
-@keyframes theme-wipe-left {
+@keyframes theme-fade-out {
   from {
-    clip-path: inset(0 100% 0 0);
+    opacity: 0;
   }
   to {
-    clip-path: inset(0 0 0 0);
+    opacity: 1;
   }
 }
 
-@keyframes theme-wipe-right {
+@keyframes theme-fade-in {
   from {
-    clip-path: inset(0 0 0 100%);
+    opacity: 1;
   }
   to {
-    clip-path: inset(0 0 0 0);
+    opacity: 0;
   }
 }

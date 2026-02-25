@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import * as React from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -28,7 +29,7 @@ export function SiteNavbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         <h1 className="font-display text-lg tracking-tight">
           <strong>Siddhesh Badani</strong>
         </h1>
@@ -40,24 +41,24 @@ export function SiteNavbar() {
               <NavigationMenuContent>
                 <div className="grid w-[250px] gap-2 p-3">
                   <NavLink
+                    href="/sutra"
+                    title="Sūtra"
+                    desc="Following the thread until it leads somewhere true."
+                  />
+                  <NavLink
                     href="/vichar"
                     title="Vichār"
-                    desc="Short reflections and thinking in motion."
+                    desc="Thinking out loud before the ideas settle."
                   />
                   <NavLink
                     href="/katha"
                     title="Kathā"
-                    desc="Narratives, project journeys, lived arcs."
+                    desc="Memory and imagination, turned into scenes."
                   />
                   <NavLink
-                    href="/sangrah"
-                    title="Saṅgrah"
-                    desc="Curated collections and thematic groupings."
-                  />
-                  <NavLink
-                    href="/pata"
-                    title="Paṭa"
-                    desc="Raw scrolls, notes, fragments, marginalia."
+                    href="/itihas"
+                    title="Itihās"
+                    desc="My life, as it was — honest and unembellished."
                   />
                 </div>
               </NavigationMenuContent>
