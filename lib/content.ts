@@ -39,6 +39,7 @@ async function getPostsForSection(section: Section): Promise<Post[]> {
       return {
         title: data.title as string,
         devanagari: data.devanagari as string | undefined,
+        form: data.form as string | undefined,
         section,
         slug: path.basename(filename, ".md"),
         date: data.date as string,
@@ -78,6 +79,7 @@ async function getFullPost(
   return {
     title: data.title as string,
     devanagari: data.devanagari as string | undefined,
+    form: data.form as string | undefined,
     section,
     slug,
     date: data.date as string,

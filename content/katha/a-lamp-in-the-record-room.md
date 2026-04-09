@@ -3,6 +3,7 @@ title: A Lamp in the Record Room
 devanagari: अभिलेख कक्ष में दीपक
 date: "2025-05-02"
 excerpt: During a power cut, a clerk continues sorting village maps by lantern light and discovers a folded tracing inserted into the wrong taluk bundle forty years earlier.
+form: PROSE
 ---
 
 The power failed just as the monsoon rain began, and the ceiling fans slowed into silence. In the record room, where the windows were kept high for security, the clerk lit a kerosene lamp and continued tying map bundles because the inspection was due the next morning and delay would only produce more delay.

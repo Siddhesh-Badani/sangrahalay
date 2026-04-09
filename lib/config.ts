@@ -9,6 +9,7 @@ export type Post = {
   date: string;
   excerpt: string;
   devanagari?: string;
+  form?: string;
   body: string;
 };
 

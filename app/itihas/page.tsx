@@ -27,6 +27,8 @@ export default async function ItihasPage() {
             section={post.section}
             date={post.date}
             excerpt={post.excerpt}
+            form={post.form}
+            showForm
           />
         ))}
       </section>

@@ -8,11 +8,14 @@ type CatalogCardProps = {
   section: Section;
   date: string;
   excerpt: string;
+  form?: string;
+  showForm?: boolean;
 };
 
-export function CatalogCard({ title, slug, section, date, excerpt }: CatalogCardProps) {
+export function CatalogCard({ title, slug, section, date, excerpt, form, showForm }: CatalogCardProps) {
   const href = getPostHref({ section, slug });
   const meta = SECTION_META[section];
+  const label = showForm ? (form ?? meta.name) : meta.name;
 
   return (
     <article
@@ -21,7 +24,7 @@ export function CatalogCard({ title, slug, section, date, excerpt }: CatalogCard
     >
       <div className="flex items-start justify-between gap-3">
         <p className="text-[10px] uppercase tracking-[0.15em]" style={{ color: meta.accentColor }}>
-          {meta.name}
+          {label}
         </p>
         <p className="font-mono text-[11px] text-muted-foreground">{formatPostDate(date)}</p>
       </div>
