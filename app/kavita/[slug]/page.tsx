@@ -9,7 +9,7 @@ import {
   getSectionStaticParams,
 } from "@/lib/content";
 
-const section = "sutra" as const;
+const section = "kavita" as const;
 
 type SutraEntryPageProps = {
   params: Promise<{ slug: string }>;
