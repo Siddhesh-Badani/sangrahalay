@@ -17,29 +17,34 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "./mode-toggle";
+import { SECTION_META } from "@/lib/config";
 
 const exploreItems = [
   {
     href: "/vichar",
     title: "Vichār \\ Reflections",
     descriptor: "Short pieces on life, ideas and meaning.",
+    accentColor: SECTION_META.vichar.accentColor,
   },
   {
     href: "/katha",
     title: "Kathā \\ Tales",
     descriptor: "Stories told through character and arc.",
+    accentColor: SECTION_META.katha.accentColor,
   },
   {
     href: "/itihas",
     title: "Itihās \\ As It Was",
     descriptor: "Memory and lived experience, revisited.",
+    accentColor: SECTION_META.itihas.accentColor,
   },
   {
     href: "/kavita",
     title: "Kavitā \\ Poems",
     descriptor: "Language at its most distilled.",
+    accentColor: SECTION_META.kavita.accentColor,
   },
-] as const;
+];
 
 function isSectionPath(pathname: string) {
   return exploreItems.some((item) => pathname === item.href || pathname.startsWith(`${item.href}/`));
@@ -120,6 +125,7 @@ export function SiteNavbar() {
                         href={item.href}
                         title={item.title}
                         descriptor={item.descriptor}
+                        accentColor={item.accentColor}
                       />
                     ))}
                   </div>
@@ -185,6 +191,7 @@ export function SiteNavbar() {
                 href={item.href}
                 title={item.title}
                 descriptor={item.descriptor}
+                accentColor={item.accentColor}
                 active={pathname === item.href || pathname.startsWith(`${item.href}/`)}
                 onSelect={() => setIsOpen(false)}
               />
@@ -222,17 +229,20 @@ function ExploreMenuLink({
   href,
   title,
   descriptor,
+  accentColor,
 }: {
   href: string;
   title: string;
   descriptor: string;
+  accentColor: string;
 }) {
   return (
     <Link
       href={href}
+      style={{ "--item-accent": accentColor } as React.CSSProperties}
       className={cn(
-        "group/item block border-b-0 border-l-2 border-l-transparent px-4 py-3 transition-[background-color,border-color] duration-150 ease-out",
-        "hover:bg-accent/15 hover:border-l-(--gold) focus-visible:bg-accent/15 focus-visible:border-l-(--gold)",
+        "group/item block border-b-0 border-l-4 border-l-transparent px-4 py-3 transition-[background-color,border-color] duration-150 ease-out",
+        "hover:bg-accent/15 hover:border-l-(--item-accent) focus-visible:bg-accent/15 focus-visible:border-l-(--item-accent)",
         "focus-visible:outline-none focus-visible:ring-0"
       )}
     >
@@ -250,12 +260,14 @@ function MobileExploreLink({
   href,
   title,
   descriptor,
+  accentColor,
   active,
   onSelect,
 }: {
   href: string;
   title: string;
   descriptor: string;
+  accentColor: string;
   active: boolean;
   onSelect: () => void;
 }) {
@@ -263,11 +275,12 @@ function MobileExploreLink({
     <Link
       href={href}
       onClick={onSelect}
+      style={{ "--item-accent": accentColor } as React.CSSProperties}
       className={cn(
-        "group/mobile block border-b-0 border-l-2 px-3 py-3 transition-[background-color,border-color] duration-150",
+        "group/mobile block border-b-0 border-l-4 px-3 py-3 transition-[background-color,border-color] duration-150",
         active
-          ? "border-l-(--gold) bg-secondary/40"
-          : "border-l-transparent hover:border-l-(--gold) hover:bg-accent/10"
+          ? "border-l-(--item-accent) bg-secondary/40"
+          : "border-l-transparent hover:border-l-(--item-accent) hover:bg-accent/10"
       )}
     >
       <span
