@@ -4,8 +4,8 @@ import { SECTION_META, getPostsBySection } from "@/lib/content";
 
 const section = "itihas" as const;
 
-export default function ItihasPage() {
-  const entries = getPostsBySection(section);
+export default async function ItihasPage() {
+  const entries = await getPostsBySection(section);
   const meta = SECTION_META[section];
 
   return (

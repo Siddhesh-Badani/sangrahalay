@@ -11,7 +11,7 @@ import {
   formatPostDate,
   type Post,
   type Section,
-} from "@/lib/content";
+} from "@/lib/config";
 
 type ArchiveFilterProps = {
   posts: Post[];

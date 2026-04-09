@@ -1,9 +1,9 @@
 import ArchiveFilter from "@/components/ArchiveFilter";
 import { getAllPostsSorted, getTotalEntryCount } from "@/lib/content";
 
-export default function ArchivePage() {
-  const allPosts = getAllPostsSorted();
-  const totalEntries = getTotalEntryCount();
+export default async function ArchivePage() {
+  const allPosts = await getAllPostsSorted();
+  const totalEntries = await getTotalEntryCount();
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">

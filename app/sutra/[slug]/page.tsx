@@ -15,13 +15,13 @@ type SutraEntryPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return getSectionStaticParams(section);
 }
 
 export default async function SutraEntryPage({ params }: SutraEntryPageProps) {
   const { slug } = await params;
-  const post = getPostBySectionAndSlug(section, slug);
+  const post = await getPostBySectionAndSlug(section, slug);
 
   if (!post) {
     notFound();
@@ -40,11 +40,10 @@ export default async function SutraEntryPage({ params }: SutraEntryPageProps) {
           devanagari={post.devanagari}
         />
 
-        <div className="folio-prose space-y-6 text-[17px] leading-[1.85] text-foreground md:text-lg">
-          {post.body.map((paragraph, index) => (
-            <p key={`${post.slug}-${index}`}>{paragraph}</p>
-          ))}
-        </div>
+        <div
+          className="folio-prose space-y-6 text-[17px] leading-[1.85] text-foreground md:text-lg"
+          dangerouslySetInnerHTML={{ __html: post.body }}
+        />
 
         <footer>
           <hr className="my-8 border-border" />

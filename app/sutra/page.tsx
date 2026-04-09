@@ -4,8 +4,8 @@ import { SECTION_META, getPostsBySection } from "@/lib/content";
 
 const section = "sutra" as const;
 
-export default function SutraPage() {
-  const entries = getPostsBySection(section);
+export default async function SutraPage() {
+  const entries = await getPostsBySection(section);
   const meta = SECTION_META[section];
 
   return (

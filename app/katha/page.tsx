@@ -4,8 +4,8 @@ import { SECTION_META, getPostsBySection } from "@/lib/content";
 
 const section = "katha" as const;
 
-export default function KathaPage() {
-  const entries = getPostsBySection(section);
+export default async function KathaPage() {
+  const entries = await getPostsBySection(section);
   const meta = SECTION_META[section];
 
   return (

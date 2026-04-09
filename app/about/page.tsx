@@ -11,8 +11,8 @@ const aboutParagraphs = [
   "An archive is not made for preservation alone. Things kept carefully become available for return: to reread, to compare, to correct, and to reconsider. The point of retention is renewed use.",
 ];
 
-export default function AboutPage() {
-  const totalEntries = getTotalEntryCount();
+export default async function AboutPage() {
+  const totalEntries = await getTotalEntryCount();
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">

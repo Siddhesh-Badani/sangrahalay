@@ -4,8 +4,8 @@ import { SECTION_META, getPostsBySection } from "@/lib/content";
 
 const section = "vichar" as const;
 
-export default function VicharPage() {
-  const entries = getPostsBySection(section);
+export default async function VicharPage() {
+  const entries = await getPostsBySection(section);
   const meta = SECTION_META[section];
 
   return (

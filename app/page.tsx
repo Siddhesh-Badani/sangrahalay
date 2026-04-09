@@ -7,6 +7,7 @@ import {
   ARCHIVE_ESTABLISHED_YEAR,
   SECTIONS,
   SECTION_META,
+  Section,
   formatPostDate,
   getPostHref,
   getRecentPosts,
@@ -14,8 +15,11 @@ import {
   getSectionHref,
 } from "@/lib/content";
 
-export default function Page() {
-  const recentPosts = getRecentPosts(4);
+export default async function Page() {
+  const recentPosts = await getRecentPosts(4);
+  const sectionCounts = Object.fromEntries(
+    await Promise.all(SECTIONS.map(async (s) => [s, await getSectionCount(s)])),
+  ) as Record<Section, number>;
 
   return (
     <main className="mx-auto max-w-6xl px-4">
@@ -61,7 +65,7 @@ export default function Page() {
                 devanagari={meta.devanagari}
                 description={meta.portalDescription}
                 slug={getSectionHref(section)}
-                count={getSectionCount(section)}
+                count={sectionCounts[section]}
                 accentColor={meta.accentColor}
               />
             );
