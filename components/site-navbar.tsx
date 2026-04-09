@@ -73,11 +73,11 @@ export function SiteNavbar() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 supports-[backdrop-filter]:bg-background/80 supports-[backdrop-filter]:backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 supports-backdrop-filter:bg-background/80 supports-backdrop-filter:backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3">
         <Link href="/" className="leading-none">
           <span className="block text-lg font-normal text-foreground">Sangrahalay</span>
-          <span className="mt-0.5 block font-hindi text-xs text-muted-foreground opacity-60">
+          <span className="mt-0.5 block font-hindi text-xs text-muted-foreground opacity-75">
             संग्रहालय
           </span>
         </Link>
@@ -89,7 +89,7 @@ export function SiteNavbar() {
                 <NavigationMenuTrigger className={exploreTriggerClass(exploreActive)}>
                   Explore
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="w-[22rem] rounded-none border border-border/60 bg-background p-0 shadow-[2px_3px_8px_rgba(30,26,22,0.08)]">
+                <NavigationMenuContent className="w-88 rounded-none border border-border/60 bg-background p-0 shadow-[2px_3px_8px_rgba(30,26,22,0.08)]">
                   <div className="divide-y divide-border/70">
                     {exploreItems.map((item) => (
                       <ExploreMenuLink
@@ -147,7 +147,7 @@ export function SiteNavbar() {
         id="mobile-navigation"
         className={cn(
           "overflow-hidden border-t border-border/70 bg-background transition-all duration-200 md:hidden",
-          isOpen ? "max-h-[40rem] opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-160 opacity-100" : "max-h-0 opacity-0"
         )}
       >
         <nav className="mx-auto max-w-6xl px-4 py-4">
@@ -209,14 +209,14 @@ function ExploreMenuLink({
       href={href}
       className={cn(
         "group/item block border-b-0 border-l-2 border-l-transparent px-4 py-3 transition-[background-color,border-color] duration-150 ease-out",
-        "hover:bg-accent/15 hover:border-l-[color:var(--gold)] focus-visible:bg-accent/15 focus-visible:border-l-[color:var(--gold)]",
+        "hover:bg-accent/15 hover:border-l-(--gold) focus-visible:bg-accent/15 focus-visible:border-l-(--gold)",
         "focus-visible:outline-none focus-visible:ring-0"
       )}
     >
-      <span className="block text-[15px] leading-snug text-foreground transition-colors duration-150 group-hover/item:text-[var(--pink)] group-focus-visible/item:text-[var(--pink)]">
+      <span className="block text-[15px] leading-snug text-foreground transition-colors duration-150 group-hover/item:text-(--pink) group-focus-visible/item:text-(--pink)">
         {title}
       </span>
-      <span className="mt-1 block font-hindi text-[12px] leading-snug italic text-muted-foreground">
+      <span className="mt-1 block text-[12px] leading-snug italic text-muted-foreground">
         {descriptor}
       </span>
     </Link>
@@ -243,8 +243,8 @@ function MobileExploreLink({
       className={cn(
         "group/mobile block border-b-0 border-l-2 px-3 py-3 transition-[background-color,border-color] duration-150",
         active
-          ? "border-l-[color:var(--gold)] bg-secondary/40"
-          : "border-l-transparent hover:border-l-[color:var(--gold)] hover:bg-accent/10"
+          ? "border-l-(--gold) bg-secondary/40"
+          : "border-l-transparent hover:border-l-(--gold) hover:bg-accent/10"
       )}
     >
       <span
@@ -252,12 +252,12 @@ function MobileExploreLink({
           "block text-[15px] leading-snug transition-colors duration-150",
           active
             ? "text-foreground"
-            : "text-foreground group-hover/mobile:text-[var(--pink)]"
+            : "text-foreground group-hover/mobile:text-(--pink)"
         )}
       >
         {title}
       </span>
-      <span className="mt-1 block font-hindi text-[12px] leading-snug italic text-muted-foreground">
+      <span className="mt-1 block text-[12px] leading-snug italic text-muted-foreground">
         {descriptor}
       </span>
     </Link>

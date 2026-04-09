@@ -165,13 +165,13 @@ a:hover {
 
 /* Keep dark mode */
 .dark {
-  --background: 30 15% 10%;
+  --background: 28 18% 9%;
   --foreground: 33 33% 93%;
 
-  --card: 30 15% 14%;
+  --card: 28 16% 13%;
   --card-foreground: 33 33% 93%;
 
-  --popover: 30 15% 14%;
+  --popover: 28 16% 13%;
   --popover-foreground: 33 33% 93%;
 
   --primary: 42 38% 53%;
@@ -203,11 +203,27 @@ a:hover {
 @layer utilities {
   .folio-prose > p:first-of-type::first-letter {
     font-family: var(--font-display), serif;
-    font-size: 3.5rem;
-    line-height: 0.85;
+    font-size: 3rem;
+    line-height: 0.9;
     float: left;
     margin-right: 0.1em;
     color: var(--gold);
+  }
+
+  .section-ornament {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+  .section-ornament::before,
+  .section-ornament::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
   }
 
   .folio-prose blockquote {

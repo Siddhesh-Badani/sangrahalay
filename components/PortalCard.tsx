@@ -31,13 +31,10 @@ export function PortalCard({
   accentColor,
 }: PortalCardProps) {
   return (
-    <article className="group border border-border bg-background p-8 transition-colors duration-200 ease-out hover:bg-secondary md:p-10">
-      <div
-        className="mb-4 h-0.5 w-8 bg-primary"
-        style={{ backgroundColor: accentColor }}
-        aria-hidden="true"
-      />
-
+    <article
+      className="group border border-border border-t-2 bg-background p-8 transition-colors duration-200 ease-out hover:bg-secondary md:p-10"
+      style={{ borderTopColor: accentColor }}
+    >
       <p className="mb-2 font-mono text-xs text-muted-foreground opacity-50">
         {getPortalNumber(slug)}
       </p>
@@ -45,7 +42,7 @@ export function PortalCard({
       <h2 className="text-2xl font-normal text-foreground">
         <Link href={slug}>{name}</Link>
       </h2>
-      <p className="mt-1 font-hindi text-base text-muted-foreground opacity-50">{devanagari}</p>
+      <p className="mt-1 font-hindi text-base text-muted-foreground opacity-70">{devanagari}</p>
 
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
 
@@ -54,7 +51,7 @@ export function PortalCard({
       <p className="mt-6">
         <Link
           href={slug}
-          className="inline-block border-b border-transparent text-sm text-muted-foreground transition-colors duration-150 group-hover:border-b-[color:var(--pink)] group-hover:text-[var(--pink)]"
+          className="inline-block border-b border-transparent text-sm text-muted-foreground opacity-40 transition-all duration-150 group-hover:border-b-(--pink) group-hover:text-(--pink) group-hover:opacity-100"
         >
           Enter →
         </Link>

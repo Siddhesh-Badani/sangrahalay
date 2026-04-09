@@ -19,10 +19,12 @@ export default function Page() {
 
   return (
     <main className="mx-auto max-w-6xl px-4">
-      <section className="py-6 text-center md:py-6">
-        <Image src="/logo.png" alt="Siddhesh Badani" width={350} height={350} className="mx-auto rounded-sm" />
+      <section className="py-10 text-center md:py-14">
+        <div className="mx-auto inline-block rounded-sm border border-border/60 bg-secondary p-1.5">
+          <Image src="/logo.png" alt="Siddhesh Badani" width={350} height={350} className="rounded-sm" />
+        </div>
 
-        <p className="font-hindi text-5xl text-muted-foreground opacity-40 md:text-6xl">
+        <p className="mt-6 font-hindi text-5xl text-muted-foreground opacity-60 md:text-6xl">
           संग्रहालय
         </p>
 
@@ -76,6 +78,11 @@ export default function Page() {
             >
               <div>
                 <p className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                  <span
+                    className="mr-1 inline-block size-1.5 rounded-full align-middle"
+                    style={{ backgroundColor: SECTION_META[post.section].accentColor }}
+                    aria-hidden="true"
+                  />
                   {SECTION_META[post.section].name}
                 </p>
                 <p className="mt-1 text-base text-foreground">

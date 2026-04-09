@@ -15,6 +15,7 @@ export default function VicharPage() {
         devanagari={meta.devanagari}
         description={meta.listingDescription}
         count={entries.length}
+        accentColor={meta.accentColor}
       />
 
       <section className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">

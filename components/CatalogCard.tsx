@@ -20,7 +20,7 @@ export function CatalogCard({ title, slug, section, date, excerpt }: CatalogCard
       style={{ borderTopColor: meta.accentColor }}
     >
       <div className="flex items-start justify-between gap-3">
-        <p className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+        <p className="text-[10px] uppercase tracking-[0.15em]" style={{ color: meta.accentColor }}>
           {meta.name}
         </p>
         <p className="font-mono text-[11px] text-muted-foreground">{formatPostDate(date)}</p>
@@ -37,7 +37,7 @@ export function CatalogCard({ title, slug, section, date, excerpt }: CatalogCard
       <div className="mt-4">
         <Link
           href={href}
-          className="border-b border-transparent text-sm text-muted-foreground opacity-0 transition-all duration-150 ease-out group-hover:opacity-100 group-focus-within:opacity-100 group-hover:border-b-[color:var(--pink)] group-focus-within:border-b-[color:var(--pink)] group-hover:text-[var(--pink)] group-focus-within:text-[var(--pink)]"
+          className="border-b border-transparent text-sm text-muted-foreground opacity-35 transition-all duration-150 ease-out group-hover:opacity-100 group-focus-within:opacity-100 group-hover:border-b-(--pink) group-focus-within:border-b-(--pink) group-hover:text-(--pink) group-focus-within:text-(--pink)"
         >
           → Read entry
         </Link>

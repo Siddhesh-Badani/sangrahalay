@@ -26,13 +26,13 @@ export function FolioHeader({ title, section, date, excerpt, devanagari }: Folio
       <div className="mt-5 flex flex-wrap items-center gap-4">
         <p className="font-mono text-sm text-muted-foreground">{formatPostDate(date)}</p>
         <span className="h-4 w-px bg-border" aria-hidden="true" />
-        <p className="text-xs uppercase tracking-widest text-primary">{meta.name}</p>
+        <p className="text-xs uppercase tracking-widest" style={{ color: meta.accentColor }}>{meta.name}</p>
       </div>
 
       <hr className="my-6 border-border" />
 
       {excerpt ? (
-        <p className="border-l-2 border-l-primary pl-4 text-base italic text-muted-foreground">
+        <p className="border-l-2 pl-4 text-base italic text-muted-foreground" style={{ borderLeftColor: meta.accentColor }}>
           {excerpt}
         </p>
       ) : null}
