@@ -32,7 +32,7 @@ export function PortalCard({
 }: PortalCardProps) {
   return (
     <article
-      className="group border border-border border-t-2 bg-background p-8 transition-colors duration-200 ease-out hover:bg-secondary md:p-10"
+      className="group border border-border border-t-2 bg-background p-6 transition-colors duration-200 ease-out hover:bg-secondary md:p-7"
       style={{ borderTopColor: accentColor }}
     >
       <p className="mb-2 font-mono text-xs text-muted-foreground opacity-50">
@@ -46,9 +46,9 @@ export function PortalCard({
 
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
 
-      <p className="mt-4 font-mono text-xs text-muted-foreground opacity-60">— {count} entries</p>
+      <p className="mt-3 font-mono text-xs text-muted-foreground opacity-60">— {count} entries</p>
 
-      <p className="mt-6">
+      <p className="mt-5">
         <Link
           href={slug}
           className="inline-block border-b border-transparent text-sm text-muted-foreground opacity-40 transition-all duration-150 group-hover:border-b-(--pink) group-hover:text-(--pink) group-hover:opacity-100"

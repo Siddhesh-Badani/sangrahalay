@@ -70,7 +70,7 @@ export function ArchiveFilter({ posts }: ArchiveFilterProps) {
         })}
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="scrollbar-hidden overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
             <tr className="border-b border-border/70">

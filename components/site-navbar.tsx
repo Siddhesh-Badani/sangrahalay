@@ -75,14 +75,14 @@ export function SiteNavbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 supports-backdrop-filter:bg-background/80 supports-backdrop-filter:backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4">
-        <Link href="/" className="flex items-center gap-0 leading-none">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-2">
+        <Link href="/" className="flex items-center gap-2 leading-none">
           <Image
             src="/logo.png"
             alt=""
             width={64}
             height={64}
-            className="h-23 w-23 rounded-sm"
+            className="h-13 w-10 rounded-sm"
             aria-hidden="true"
           />
           <span>

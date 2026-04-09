@@ -88,6 +88,8 @@
 html,
 body {
   margin: 0;
+  width: 100%;
+  overflow-x: hidden;
   font-family: var(--font-body), serif;
   line-height: 1.65;
 }
@@ -201,6 +203,15 @@ a:hover {
 }
 
 @layer utilities {
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
   .folio-prose > p:first-of-type::first-letter {
     font-family: var(--font-display), serif;
     font-size: 3rem;
