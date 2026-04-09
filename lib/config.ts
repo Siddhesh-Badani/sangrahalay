@@ -42,7 +42,7 @@ export const SECTION_META: Record<Section, SectionMeta> = {
       "Extended observations on language, learning, form, and record. These essays remain close to material practices while allowing argument to unfold at full length.",
     portalDescription:
       "Essays and observations on language, form, memory, and institutions.",
-    accentColor: "#c97b96",
+    accentColor: "#c9687e",
   },
   katha: {
     name: "Kathā",
@@ -62,7 +62,7 @@ export const SECTION_META: Record<Section, SectionMeta> = {
       "Materials for the long view: craft, infrastructure, domestic objects, and institutional habits. The aim is to read history through things that outlast their first use.",
     portalDescription:
       "Historical inquiry through objects, craft processes, and public records.",
-    accentColor: "#5a6b8a",
+    accentColor: "#7a6848",
   },
 };
 
