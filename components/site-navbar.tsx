@@ -89,7 +89,7 @@ export function SiteNavbar() {
                 <NavigationMenuTrigger className={exploreTriggerClass(exploreActive)}>
                   Explore
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="w-88 rounded-none border border-border/60 bg-background p-0 shadow-[2px_3px_8px_rgba(30,26,22,0.08)]">
+                <NavigationMenuContent className="md:w-[26rem] rounded-none border border-border/60 bg-background p-0 shadow-[2px_3px_8px_rgba(30,26,22,0.08)]">
                   <div className="divide-y divide-border/70">
                     {exploreItems.map((item) => (
                       <ExploreMenuLink
