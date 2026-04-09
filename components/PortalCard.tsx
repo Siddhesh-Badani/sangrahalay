@@ -32,7 +32,7 @@ export function PortalCard({
 }: PortalCardProps) {
   return (
     <article
-      className="group border border-border border-t-2 bg-background p-6 transition-colors duration-200 ease-out hover:bg-secondary md:p-7"
+      className="group border border-border border-t-5 bg-background p-6 transition-colors duration-200 ease-out hover:bg-secondary md:p-7"
       style={{ borderTopColor: accentColor }}
     >
       <p className="mb-2 font-mono text-xs text-muted-foreground opacity-50">
