@@ -153,6 +153,16 @@ export function SiteNavbar() {
                   About
                 </Link>
               </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <Link
+                  href="/author"
+                  className={desktopNavItemClass(pathname === "/author")}
+                  aria-current={pathname === "/author" ? "page" : undefined}
+                >
+                  Author
+                </Link>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
 
@@ -215,6 +225,14 @@ export function SiteNavbar() {
               className={desktopNavItemClass(pathname === "/about")}
             >
               About
+            </Link>
+
+            <Link
+              href="/author"
+              onClick={() => setIsOpen(false)}
+              className={desktopNavItemClass(pathname === "/author")}
+            >
+              Author
             </Link>
 
             <ModeToggle />
