@@ -46,14 +46,14 @@ export function PortalCard({
 
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
 
-      <p className="mt-3 font-mono text-xs text-muted-foreground opacity-60">— {count} entries</p>
+      <p className="mt-3 font-mono text-xs text-muted-foreground opacity-60">✦ {count} pieces</p>
 
       <p className="mt-5">
         <Link
           href={slug}
           className="inline-block border-b border-transparent text-sm text-muted-foreground opacity-40 transition-all duration-150 group-hover:border-b-(--pink) group-hover:text-(--pink) group-hover:opacity-100"
         >
-          Enter →
+          Browse →
         </Link>
       </p>
     </article>

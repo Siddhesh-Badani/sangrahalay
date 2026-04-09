@@ -1,4 +1,4 @@
-export const SECTIONS = ["sutra", "vichar", "katha", "itihas"] as const;
+export const SECTIONS = ["vichar", "katha", "itihas", "kavita"] as const;
 
 export type Section = (typeof SECTIONS)[number];
 
@@ -24,44 +24,40 @@ export type SectionMeta = {
 export const ARCHIVE_ESTABLISHED_YEAR = 2026;
 
 export const SECTION_META: Record<Section, SectionMeta> = {
-  sutra: {
-    name: "Sūtra",
-    devanagari: "सूत्र",
-    descriptor: "aphorisms & condensed principles",
-    listingDescription:
-      "This series gathers short formulations intended for repeated reading. The entries are brief by design and assume return, comparison, and commentary rather than immediate completion.",
+  vichar: {
+    name: "Vichār \\ Reflections",
+    devanagari: "विचार",
+    descriptor: "",
+    listingDescription: "",
     portalDescription:
-      "Condensed principles and interpretive notes written for slow rereading.",
+      "The things that linger after the thinking is done. Short fragments and reflections on life, ideas and meaning.",
     accentColor: "var(--gold)",
   },
-  vichar: {
-    name: "Vichār",
-    devanagari: "विचार",
-    descriptor: "essays & intellectual observations",
+  katha: {
+    name: "Kathā \\ Tales",
+    devanagari: "कथा",
+    descriptor: "",
     listingDescription:
-      "Extended observations on language, learning, form, and record. These essays remain close to material practices while allowing argument to unfold at full length.",
-    portalDescription:
-      "Essays and observations on language, form, memory, and institutions.",
+      "",
+    portalDescription: "Some truths arrive only through story. Narrative work, fiction and explorations told through character and arc.",
     accentColor: "#c9687e",
   },
-  katha: {
-    name: "Kathā",
-    devanagari: "कथा",
-    descriptor: "stories, parables & narrative",
+  itihas: {
+    name: "Itihās \\ As It Was",
+    devanagari: "इतिहास",
+    descriptor: "",
     listingDescription:
-      "Narrative entries in which incidents carry argument without announcing it. Stories are treated as primary containers of knowledge, not ornamental diversions.",
-    portalDescription:
-      "Narratives, parables, and remembered scenes treated as archival material.",
+      "",
+    portalDescription: "What was lived before it became memory. Personal history, memoir and accounts drawn from experience.",
     accentColor: "#b5623a",
   },
-  itihas: {
-    name: "Itihās",
-    devanagari: "इतिहास",
-    descriptor: "historical & cultural inquiry",
+  kavita: {
+    name: "Kavitā \\ Poems",
+    devanagari: "कविता",
+    descriptor: "",
     listingDescription:
-      "Materials for the long view: craft, infrastructure, domestic objects, and institutional habits. The aim is to read history through things that outlast their first use.",
-    portalDescription:
-      "Historical inquiry through objects, craft processes, and public records.",
+      "",
+    portalDescription: "Where language is asked to carry more than meaning. Poetry and lyrical expression in its many forms.",
     accentColor: "#7a6848",
   },
 };

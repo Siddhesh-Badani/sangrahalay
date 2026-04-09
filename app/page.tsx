@@ -44,7 +44,7 @@ export default async function Page() {
               Sangrahalay
             </h1>
 
-            <p className="mt-6 text-base italic text-muted-foreground md:text-lg">
+            <p className="mt-6 text-base bold italic text-muted-foreground md:text-lg">
               What was Thought. What was Felt. What Remains.
             </p>
 
@@ -92,7 +92,7 @@ export default async function Page() {
         <hr className="border-border" />
 
         <h2 className="mb-4 mt-5 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Recent Acquisitions
+          A place to begin... Few pieces, handpicked with care.
         </h2>
 
         <div className="grid gap-3 md:grid-cols-4">
