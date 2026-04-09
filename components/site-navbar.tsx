@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -74,11 +75,21 @@ export function SiteNavbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 supports-backdrop-filter:bg-background/80 supports-backdrop-filter:backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3">
-        <Link href="/" className="leading-none">
-          <span className="block text-lg font-normal text-foreground">Sangrahalay</span>
-          <span className="mt-0.5 block font-hindi text-xs text-muted-foreground opacity-75">
-            संग्रहालय
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4">
+        <Link href="/" className="flex items-center gap-0 leading-none">
+          <Image
+            src="/logo.png"
+            alt=""
+            width={64}
+            height={64}
+            className="h-23 w-23 rounded-sm"
+            aria-hidden="true"
+          />
+          <span>
+            <span className="block text-lg font-normal text-foreground">Sangrahalay</span>
+            <span className="mt-0.5 block font-hindi text-xs text-muted-foreground opacity-75">
+              संग्रहालय
+            </span>
           </span>
         </Link>
 
