@@ -23,37 +23,52 @@ export default async function Page() {
 
   return (
     <main className="mx-auto max-w-6xl px-4">
-      <section className="py-8 text-center md:py-10">
-        <div className="mx-auto inline-block rounded-sm border border-border/60 bg-secondary p-1.5">
-          <Image
-            src="/logo.png"
-            alt="Siddhesh Badani"
-            width={300}
-            height={300}
-            className="h-56 w-56 rounded-sm md:h-64 md:w-64"
-          />
+      <section className="pb-8 pt-4 md:pb-10 md:pt-3">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center md:flex-row md:items-center md:gap-10 md:text-left">
+          <div className="w-full md:w-1/2">
+            <Image
+              src="/flower1.png"
+              alt="abstract illustration"
+              width={700}
+              height={700}
+              className="h-auto w-full rounded-sm object-cover"
+            />
+          </div>
+
+          <div className="w-full md:w-1/2">
+            <p className="font-hindi text-4xl text-muted-foreground opacity-60 md:text-5xl">
+              संग्रहालय
+            </p>
+
+            <h1 className="mt-2 text-5xl font-normal tracking-[-0.02em] text-foreground md:text-6xl">
+              Sangrahalay
+            </h1>
+
+            <p className="mt-6 text-base italic text-muted-foreground md:text-lg">
+              What was Thought. What was Felt. What Remains.
+            </p>
+
+            <p className="mt-2 text-base text-muted-foreground md:text-lg">
+              This is Sangrahalay... A quiet space for reflection, story, memory and verse. For a
+              world that reads fast and forgets faster, writing collected not for attention, but for
+              permanence. Gathered with intention, held without urgency.
+            </p>
+
+            <p className="mt-2 text-base text-muted-foreground md:text-lg">
+              For a world that reads fast and forgets faster, writing collected not for attention,
+              but for permanence. Gathered with intention, held without urgency.
+            </p>
+
+            <p className="mt-5 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground opacity-60">
+              Est. {ARCHIVE_ESTABLISHED_YEAR}
+            </p>
+          </div>
         </div>
-
-        <p className="mt-4 font-hindi text-4xl text-muted-foreground opacity-60 md:text-5xl">
-          संग्रहालय
-        </p>
-
-        <h1 className="mt-2 text-5xl font-normal tracking-[-0.02em] text-foreground md:text-6xl">
-          Sangrahalay
-        </h1>
-
-        <p className="mt-3 text-base italic text-muted-foreground md:text-lg">
-          A quiet collection of thought, story, and record.
-        </p>
-
-        <p className="mt-5 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground opacity-60">
-          Est. {ARCHIVE_ESTABLISHED_YEAR} · An independent archive
-        </p>
-
-        <hr className="mx-auto mt-8 max-w-xs border-border" />
       </section>
 
-      <section aria-label="Section portals">
+      <section aria-label="Section portals" className="pb-2">
+        <hr className="mx-auto mb-8 max-w-xs border-border" />
+
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
           {SECTIONS.map((section) => {
             const meta = SECTION_META[section];

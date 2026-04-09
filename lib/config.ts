@@ -21,7 +21,7 @@ export type SectionMeta = {
   accentColor: string;
 };
 
-export const ARCHIVE_ESTABLISHED_YEAR = 2024;
+export const ARCHIVE_ESTABLISHED_YEAR = 2026;
 
 export const SECTION_META: Record<Section, SectionMeta> = {
   sutra: {
