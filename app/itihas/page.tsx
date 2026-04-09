@@ -1,4 +1,5 @@
 import CatalogCard from "@/components/CatalogCard";
+import ClosingMark from "@/components/ClosingMark";
 import SectionHeader from "@/components/SectionHeader";
 import { SECTION_META, getPostsBySection } from "@/lib/content";
 
@@ -32,6 +33,8 @@ export default async function ItihasPage() {
           />
         ))}
       </section>
+
+      <ClosingMark />
     </main>
   );
 }

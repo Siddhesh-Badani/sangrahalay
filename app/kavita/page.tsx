@@ -1,10 +1,11 @@
 import CatalogCard from "@/components/CatalogCard";
+import ClosingMark from "@/components/ClosingMark";
 import SectionHeader from "@/components/SectionHeader";
 import { SECTION_META, getPostsBySection } from "@/lib/content";
 
-const section = "sutra" as const;
+const section = "kavita" as const;
 
-export default async function SutraPage() {
+export default async function KavitaPage() {
   const entries = await getPostsBySection(section);
   const meta = SECTION_META[section];
 
@@ -32,6 +33,8 @@ export default async function SutraPage() {
           />
         ))}
       </section>
+
+      <ClosingMark />
     </main>
   );
 }

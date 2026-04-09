@@ -22,7 +22,7 @@ export function SectionHeader({ name, devanagari, description, count, accentColo
       <p className="max-w-prose text-base text-muted-foreground">{description}</p>
 
       <p className="mt-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-        Accession series · {count} entries
+        Collected ✦ {count} pieces
       </p>
     </header>
   );

@@ -42,7 +42,7 @@ export function CatalogCard({ title, slug, section, date, excerpt, form, showFor
           href={href}
           className="border-b border-transparent text-sm text-muted-foreground opacity-35 transition-all duration-150 ease-out group-hover:opacity-100 group-focus-within:opacity-100 group-hover:border-b-(--pink) group-focus-within:border-b-(--pink) group-hover:text-(--pink) group-focus-within:text-(--pink)"
         >
-          → Read entry
+          → Read
         </Link>
       </div>
     </article>

@@ -1,3 +1,4 @@
+import ClosingMark from "@/components/ClosingMark";
 import ArchiveFilter from "@/components/ArchiveFilter";
 import { getAllPostsSorted, getTotalEntryCount } from "@/lib/content";
 
@@ -23,6 +24,8 @@ export default async function ArchivePage() {
       </header>
 
       <ArchiveFilter posts={allPosts} />
+
+      <ClosingMark />
     </main>
   );
 }

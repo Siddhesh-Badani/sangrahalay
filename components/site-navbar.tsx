@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -20,22 +21,22 @@ import { ModeToggle } from "./mode-toggle";
 const exploreItems = [
   {
     href: "/vichar",
-    title: "Vichār \ Reflections",
+    title: "Vichār \\ Reflections",
     descriptor: "Short pieces on life, ideas and meaning.",
   },
   {
     href: "/katha",
-    title: "Kathā / Tales",
+    title: "Kathā \\ Tales",
     descriptor: "Stories told through character and arc.",
   },
   {
     href: "/itihas",
-    title: "Itihās / As It Was",
+    title: "Itihās \\ As It Was",
     descriptor: "Memory and lived experience, revisited.",
   },
   {
     href: "/kavita",
-    title: "Kavitā / Poems",
+    title: "Kavitā \\ Poems",
     descriptor: "Language at its most distilled.",
   },
 ] as const;
@@ -66,12 +67,20 @@ function exploreTriggerClass(active = false) {
 
 export function SiteNavbar() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
   const exploreActive = isSectionPath(pathname);
 
   React.useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const quillSrc = mounted && resolvedTheme === "dark" ? "/quill-dm.png" : "/quill.png";
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 supports-backdrop-filter:bg-background/80 supports-backdrop-filter:backdrop-blur-sm">
@@ -81,7 +90,7 @@ export function SiteNavbar() {
           className="site-brand-link flex items-center gap-2 leading-none"
         >
           <Image
-            src="/museum.png"
+            src={quillSrc}
             alt=""
             width={64}
             height={64}
@@ -101,7 +110,7 @@ export function SiteNavbar() {
             <NavigationMenuList className="gap-5">
               <NavigationMenuItem>
                 <NavigationMenuTrigger className={exploreTriggerClass(exploreActive)}>
-                  Explore
+                  Collections
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="md:w-[15rem] rounded-none border border-border/60 bg-background p-0 shadow-[2px_3px_8px_rgba(30,26,22,0.08)]">
                   <div className="divide-y divide-border/70">
@@ -166,7 +175,7 @@ export function SiteNavbar() {
       >
         <nav className="mx-auto max-w-6xl px-4 py-4">
           <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            Explore
+            Collections
           </p>
 
           <div className="divide-y divide-border/70 border-y border-border/70">
