@@ -110,6 +110,12 @@ a:hover {
   border-bottom-color: var(--pink);
 }
 
+a.site-brand-link,
+a.site-brand-link:hover {
+  color: inherit;
+  border-bottom: 0;
+}
+
 /* Selection */
 ::selection {
   background: var(--pink-soft);
@@ -118,7 +124,7 @@ a:hover {
 
 /* Simple nav hooks (non-shadcn) */
 .nav-item { color: var(--text-muted); }
-.nav-item:hover { color: var(--ink); }
+.nav-item:hover { color: hsl(var(--foreground)); }
 .nav-icon { color: var(--text-muted); }
 .nav-item:hover .nav-icon { color: var(--gold); }
 

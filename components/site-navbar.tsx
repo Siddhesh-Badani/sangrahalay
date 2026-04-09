@@ -19,24 +19,24 @@ import { ModeToggle } from "./mode-toggle";
 
 const exploreItems = [
   {
-    href: "/sutra",
-    title: "Sūtra",
-    descriptor: "aphorisms & condensed principles",
-  },
-  {
     href: "/vichar",
-    title: "Vichār",
-    descriptor: "essays & intellectual observations",
+    title: "Vichār \ Reflections",
+    descriptor: "Short pieces on life, ideas and meaning.",
   },
   {
     href: "/katha",
-    title: "Kathā",
-    descriptor: "stories, parables & narrative",
+    title: "Kathā / Tales",
+    descriptor: "Stories told through character and arc.",
   },
   {
     href: "/itihas",
-    title: "Itihās",
-    descriptor: "historical & cultural inquiry",
+    title: "Itihās / As It Was",
+    descriptor: "Memory and lived experience, revisited.",
+  },
+  {
+    href: "/kavita",
+    title: "Kavitā / Poems",
+    descriptor: "Language at its most distilled.",
   },
 ] as const;
 
@@ -49,7 +49,7 @@ function desktopNavItemClass(active = false) {
     "nav-item inline-flex h-auto items-center border-b px-0 py-1 text-sm transition-colors duration-150",
     active
       ? "border-b-[color:var(--gold)] text-foreground"
-      : "border-b-transparent text-muted-foreground hover:border-b-[color:var(--gold)] hover:text-foreground"
+      : "border-b-transparent text-muted-foreground hover:!border-b-[color:var(--gold)] hover:!text-[hsl(var(--foreground))]"
   );
 }
 
@@ -76,9 +76,12 @@ export function SiteNavbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 supports-backdrop-filter:bg-background/80 supports-backdrop-filter:backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-2">
-        <Link href="/" className="flex items-center gap-2 leading-none">
+        <Link
+          href="/"
+          className="site-brand-link flex items-center gap-2 leading-none"
+        >
           <Image
-            src="/logo.png"
+            src="/museum.png"
             alt=""
             width={64}
             height={64}
@@ -100,7 +103,7 @@ export function SiteNavbar() {
                 <NavigationMenuTrigger className={exploreTriggerClass(exploreActive)}>
                   Explore
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="md:w-[26rem] rounded-none border border-border/60 bg-background p-0 shadow-[2px_3px_8px_rgba(30,26,22,0.08)]">
+                <NavigationMenuContent className="md:w-[15rem] rounded-none border border-border/60 bg-background p-0 shadow-[2px_3px_8px_rgba(30,26,22,0.08)]">
                   <div className="divide-y divide-border/70">
                     {exploreItems.map((item) => (
                       <ExploreMenuLink

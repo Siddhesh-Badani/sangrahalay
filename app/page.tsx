@@ -44,7 +44,7 @@ export default async function Page() {
               Sangrahalay
             </h1>
 
-            <p className="mt-6 text-base bold italic text-muted-foreground md:text-lg">
+            <p className="mt-6 text-base font-bold italic text-muted-foreground md:text-lg">
               What was Thought. What was Felt. What Remains.
             </p>
 
