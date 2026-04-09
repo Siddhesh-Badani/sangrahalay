@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import ClosingMark from "@/components/ClosingMark";
 import PortalCard from "@/components/PortalCard";
@@ -18,7 +19,9 @@ export default function Page() {
 
   return (
     <main className="mx-auto max-w-6xl px-4">
-      <section className="py-24 text-center md:py-32">
+      <section className="py-6 text-center md:py-6">
+        <Image src="/logo.png" alt="Siddhesh Badani" width={350} height={350} className="mx-auto rounded-sm" />
+
         <p className="font-hindi text-5xl text-muted-foreground opacity-40 md:text-6xl">
           संग्रहालय
         </p>
