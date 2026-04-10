@@ -9,9 +9,9 @@ import {
   getSectionStaticParams,
 } from "@/lib/content";
 
-const section = "kavita" as const;
+const section = "vichar" as const;
 
-type SutraEntryPageProps = {
+type VicharEntryPageProps = {
   params: Promise<{ slug: string }>;
 };
 
@@ -19,7 +19,7 @@ export async function generateStaticParams() {
   return getSectionStaticParams(section);
 }
 
-export default async function SutraEntryPage({ params }: SutraEntryPageProps) {
+export default async function VicharEntryPage({ params }: VicharEntryPageProps) {
   const { slug } = await params;
   const post = await getPostBySectionAndSlug(section, slug);
 
@@ -38,6 +38,7 @@ export default async function SutraEntryPage({ params }: SutraEntryPageProps) {
           date={post.date}
           excerpt={post.excerpt}
           devanagari={post.devanagari}
+          form={post.form}
         />
 
         <div
@@ -48,12 +49,15 @@ export default async function SutraEntryPage({ params }: SutraEntryPageProps) {
         <footer>
           <hr className="my-8 border-border" />
 
-          <p className="text-sm text-muted-foreground">
-            <Link href={getSectionHref(section)}>← Return to {meta.name}</Link>
+          <p className="mt-4 text-center font-mono text-xs text-muted-foreground opacity-50">
+            Something stir? I&apos;d love to hear from you. <br />
+            <Link href="mailto:sangrahalay@siddhesh.org">
+              Email me: <span className="underline">sangrahalay@siddhesh.org</span>
+            </Link>
           </p>
 
-          <p className="mt-4 text-center font-mono text-xs text-muted-foreground opacity-40">
-            — End of entry —
+          <p className="mt-10 text-sm text-muted-foreground">
+            <Link href={getSectionHref(section)}>← Return to {meta.name}</Link>
           </p>
         </footer>
       </article>

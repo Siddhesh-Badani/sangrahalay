@@ -38,6 +38,7 @@ export default async function VicharEntryPage({ params }: VicharEntryPageProps) 
           date={post.date}
           excerpt={post.excerpt}
           devanagari={post.devanagari}
+          form={post.form}
         />
 
         <div
@@ -48,12 +49,15 @@ export default async function VicharEntryPage({ params }: VicharEntryPageProps) 
         <footer>
           <hr className="my-8 border-border" />
 
-          <p className="text-sm text-muted-foreground">
-            <Link href={getSectionHref(section)}>← Return to {meta.name}</Link>
+          <p className="mt-4 text-center font-mono text-xs text-muted-foreground opacity-50">
+            Intrigued? Let&apos;s continue this conversation... <br />
+            <Link href="mailto:sangrahalay@siddhesh.org">
+              Email me: <span className="underline">sangrahalay@siddhesh.org</span>
+            </Link>
           </p>
 
-          <p className="mt-4 text-center font-mono text-xs text-muted-foreground opacity-40">
-            — End of entry —
+          <p className="mt-10 text-sm text-muted-foreground">
+            <Link href={getSectionHref(section)}>← Return to {meta.name}</Link>
           </p>
         </footer>
       </article>

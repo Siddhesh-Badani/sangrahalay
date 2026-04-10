@@ -3,8 +3,7 @@ title: Your Title Here
 devanagari: देवनागरी शीर्षक यहाँ
 date: "2026-04-09"
 excerpt: A one or two sentence summary used in listings and at the top of the entry page.
-# Optional:
-# form: PROSE
+form: PROSE
 ---
 
 Your opening paragraph goes here. The first paragraph gets special folio styling on the site, so this is a good place for a strong opening rather than a repeated excerpt.
