@@ -80,10 +80,10 @@ export function ArchiveFilter({ posts }: ArchiveFilterProps) {
               <th className="w-32 py-3 pr-3 text-left font-mono text-xs uppercase tracking-widest text-muted-foreground">
                 Date
               </th>
-              <th className="w-24 py-3 pr-3 text-left font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                Section
+              <th className="w-32 py-3 pr-3 text-left font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                Collection
               </th>
-              <th className="py-3 pr-3 text-left font-mono text-xs uppercase tracking-widest text-muted-foreground">
+              <th className="w-40 py-3 pr-3 text-left font-mono text-xs uppercase tracking-widest text-muted-foreground">
                 Title
               </th>
               <th className="hidden py-3 text-left font-mono text-xs uppercase tracking-widest text-muted-foreground md:table-cell">
@@ -114,9 +114,14 @@ export function ArchiveFilter({ posts }: ArchiveFilterProps) {
                     <Link href={href} onClick={(event) => event.stopPropagation()}>
                       {post.title}
                     </Link>
+                    {post.excerpt ? (
+                      <p className="mt-1 text-sm italic text-muted-foreground md:hidden">
+                        {post.excerpt}
+                      </p>
+                    ) : null}
                   </td>
                   <td className="hidden py-3 text-sm italic text-muted-foreground md:table-cell">
-                    <span className="line-clamp-2">{post.excerpt}</span>
+                    <span className="">{post.excerpt}</span>
                   </td>
                 </tr>
               );
@@ -124,10 +129,7 @@ export function ArchiveFilter({ posts }: ArchiveFilterProps) {
 
             {filteredRows.length === 0 ? (
               <tr>
-                <td
-                  colSpan={5}
-                  className="py-8 text-center text-sm italic text-muted-foreground"
-                >
+                <td colSpan={5} className="py-8 text-center text-sm italic text-muted-foreground">
                   No entries in this series.
                 </td>
               </tr>
