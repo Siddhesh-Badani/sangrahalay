@@ -28,9 +28,14 @@ async function getPostsForSection(section: Section): Promise<Post[]> {
   if (sectionCache.has(section)) return sectionCache.get(section)!;
 
   const dir = path.join(process.cwd(), "content", section);
-  const files = (await fs.promises.readdir(dir)).filter((f) =>
-    f.endsWith(".md"),
-  );
+  let entries: string[];
+  try {
+    entries = await fs.promises.readdir(dir);
+  } catch {
+    sectionCache.set(section, []);
+    return [];
+  }
+  const files = entries.filter((f) => f.endsWith(".md"));
 
   const posts = await Promise.all(
     files.map(async (filename) => {
