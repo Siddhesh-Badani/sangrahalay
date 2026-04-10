@@ -81,7 +81,7 @@ export function ArchiveFilter({ posts }: ArchiveFilterProps) {
                 Date
               </th>
               <th className="w-32 py-3 pr-3 text-left font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                Collection
+                {activeFilter === "all" ? "Collection" : "Form"}
               </th>
               <th className="w-40 py-3 pr-3 text-left font-mono text-xs uppercase tracking-widest text-muted-foreground">
                 Title
@@ -108,7 +108,9 @@ export function ArchiveFilter({ posts }: ArchiveFilterProps) {
                     {formatPostDate(post.date)}
                   </td>
                   <td className="py-3 pr-3 text-xs uppercase tracking-widest text-primary">
-                    {SECTION_META[post.section].name}
+                    {activeFilter === "all"
+                      ? SECTION_META[post.section].name
+                      : (post.form ?? "—")}
                   </td>
                   <td className="py-3 pr-3 text-base text-foreground">
                     <Link href={href} onClick={(event) => event.stopPropagation()}>
