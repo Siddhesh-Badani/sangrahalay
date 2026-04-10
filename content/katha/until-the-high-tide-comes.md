@@ -1,7 +1,7 @@
 ---
 title: Until the High Tide Comes
 date: "2021-09-29"
-excerpt: "Billions of sandcastles built on millions of beaches throughout history. Not one of them is still standing. But it doesn't matter. People still build them."
+excerpt: "What is Success? Billions of sandcastles built on millions of beaches throughout history. Not one of them is still standing. But it doesn't matter. People still build them."
 form: VIGNETTE
 ---
 
