@@ -9,7 +9,7 @@ import {
   getSectionStaticParams,
 } from "@/lib/content";
 
-const section = "vichar" as const;
+const section = "kavita" as const;
 
 type VicharEntryPageProps = {
   params: Promise<{ slug: string }>;

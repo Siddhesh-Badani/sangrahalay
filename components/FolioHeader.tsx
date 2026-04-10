@@ -19,7 +19,7 @@ export function FolioHeader({ title, section, date, excerpt, devanagari, form }:
       <div className="mt-5 flex flex-wrap items-center gap-4">
         <p className="font-mono text-sm text-muted-foreground">{formatPostDate(date)}</p>
         <span className="h-4 w-px bg-border" aria-hidden="true" />
-        <p className="text-xs uppercase tracking-widest" style={{ color: meta.accentColor }}>
+        <p className="font-mono text-xs uppercase tracking-widest" style={{ color: meta.accentColor }}>
           {label}
         </p>
       </div>
@@ -34,7 +34,7 @@ export function FolioHeader({ title, section, date, excerpt, devanagari, form }:
         {excerpt ? (
           <p
             className="border-l-2 pl-4 text-base italic text-muted-foreground"
-            style={{ borderLeftColor: meta.accentColor }}
+            style={{ borderLeftWidth: '6px', borderLeftColor: meta.accentColor }}
           >
             {excerpt}
           </p>
