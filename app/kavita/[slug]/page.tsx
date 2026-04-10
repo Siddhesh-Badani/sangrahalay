@@ -43,6 +43,7 @@ export default async function VicharEntryPage({ params }: VicharEntryPageProps) 
 
         <div
           className="folio-prose space-y-6 text-[17px] leading-[1.85] text-foreground md:text-lg"
+          style={{ "--folio-accent": meta.accentColor } as React.CSSProperties}
           dangerouslySetInnerHTML={{ __html: post.body }}
         />
 

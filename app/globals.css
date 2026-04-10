@@ -224,7 +224,7 @@ a.site-brand-link:hover {
     line-height: 0.9;
     float: left;
     margin-right: 0.1em;
-    color: var(--gold);
+    color: var(--folio-accent, var(--gold));
   }
 
   .section-ornament {
@@ -244,7 +244,7 @@ a.site-brand-link:hover {
   }
 
   .folio-prose blockquote {
-    border-left: 2px solid var(--gold);
+    border-left: 2px solid var(--folio-accent, var(--gold));
     padding-left: 1rem;
     font-style: italic;
     color: hsl(var(--muted-foreground));
