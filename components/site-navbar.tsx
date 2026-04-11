@@ -25,24 +25,28 @@ const exploreItems = [
     title: "Vichār \\ Reflections",
     descriptor: "Short pieces on life, ideas and meaning.",
     accentColor: SECTION_META.vichar.accentColor,
+    iconSrc: SECTION_META.vichar.iconSrc,
   },
   {
     href: "/katha",
     title: "Kathā \\ Tales",
     descriptor: "Stories told through character and arc.",
     accentColor: SECTION_META.katha.accentColor,
+    iconSrc: SECTION_META.katha.iconSrc,
   },
   {
     href: "/itihas",
     title: "Itihās \\ As It Was",
     descriptor: "Memory and lived experience, revisited.",
     accentColor: SECTION_META.itihas.accentColor,
+    iconSrc: SECTION_META.itihas.iconSrc,
   },
   {
     href: "/kavita",
     title: "Kavitā \\ Poems",
     descriptor: "Language at its most distilled.",
     accentColor: SECTION_META.kavita.accentColor,
+    iconSrc: SECTION_META.kavita.iconSrc,
   },
 ];
 
@@ -126,6 +130,7 @@ export function SiteNavbar() {
                         title={item.title}
                         descriptor={item.descriptor}
                         accentColor={item.accentColor}
+                        iconSrc={item.iconSrc}
                       />
                     ))}
                   </div>
@@ -202,6 +207,7 @@ export function SiteNavbar() {
                 title={item.title}
                 descriptor={item.descriptor}
                 accentColor={item.accentColor}
+                iconSrc={item.iconSrc}
                 active={pathname === item.href || pathname.startsWith(`${item.href}/`)}
                 onSelect={() => setIsOpen(false)}
               />
@@ -248,27 +254,39 @@ function ExploreMenuLink({
   title,
   descriptor,
   accentColor,
+  iconSrc,
 }: {
   href: string;
   title: string;
   descriptor: string;
   accentColor: string;
+  iconSrc: string;
 }) {
   return (
     <Link
       href={href}
       style={{ "--item-accent": accentColor } as React.CSSProperties}
       className={cn(
-        "group/item block border-b-0 border-l-4 border-l-transparent px-4 py-3 transition-[background-color,border-color] duration-150 ease-out",
+        "group/item flex items-center gap-3 border-b-0 border-l-4 border-l-transparent px-4 py-3 transition-[background-color,border-color] duration-150 ease-out",
         "hover:bg-accent/15 hover:border-l-(--item-accent) focus-visible:bg-accent/15 focus-visible:border-l-(--item-accent)",
         "focus-visible:outline-none focus-visible:ring-0"
       )}
     >
-      <span className="block text-[15px] leading-snug text-foreground transition-colors duration-150 group-hover/item:text-(--pink) group-focus-visible/item:text-(--pink)">
-        {title}
-      </span>
-      <span className="mt-1 block text-[12px] leading-snug italic text-muted-foreground">
-        {descriptor}
+      <Image
+        src={iconSrc}
+        alt=""
+        width={28}
+        height={28}
+        className="h-7 w-7 shrink-0 rounded-sm object-contain opacity-80"
+        aria-hidden="true"
+      />
+      <span>
+        <span className="block text-[15px] leading-snug text-foreground transition-colors duration-150 group-hover/item:text-(--pink) group-focus-visible/item:text-(--pink)">
+          {title}
+        </span>
+        <span className="mt-1 block text-[12px] leading-snug italic text-muted-foreground">
+          {descriptor}
+        </span>
       </span>
     </Link>
   );
@@ -279,6 +297,7 @@ function MobileExploreLink({
   title,
   descriptor,
   accentColor,
+  iconSrc,
   active,
   onSelect,
 }: {
@@ -286,6 +305,7 @@ function MobileExploreLink({
   title: string;
   descriptor: string;
   accentColor: string;
+  iconSrc: string;
   active: boolean;
   onSelect: () => void;
 }) {
@@ -295,24 +315,34 @@ function MobileExploreLink({
       onClick={onSelect}
       style={{ "--item-accent": accentColor } as React.CSSProperties}
       className={cn(
-        "group/mobile block border-b-0 border-l-4 px-3 py-3 transition-[background-color,border-color] duration-150",
+        "group/mobile flex items-center gap-3 border-b-0 border-l-4 px-3 py-3 transition-[background-color,border-color] duration-150",
         active
           ? "border-l-(--item-accent) bg-secondary/40"
           : "border-l-transparent hover:border-l-(--item-accent) hover:bg-accent/10"
       )}
     >
-      <span
-        className={cn(
-          "block text-[15px] leading-snug transition-colors duration-150",
-          active
-            ? "text-foreground"
-            : "text-foreground group-hover/mobile:text-(--pink)"
-        )}
-      >
-        {title}
-      </span>
-      <span className="mt-1 block text-[12px] leading-snug italic text-muted-foreground">
-        {descriptor}
+      <Image
+        src={iconSrc}
+        alt=""
+        width={28}
+        height={28}
+        className="h-7 w-7 shrink-0 rounded-sm object-contain opacity-80"
+        aria-hidden="true"
+      />
+      <span>
+        <span
+          className={cn(
+            "block text-[15px] leading-snug transition-colors duration-150",
+            active
+              ? "text-foreground"
+              : "text-foreground group-hover/mobile:text-(--pink)"
+          )}
+        >
+          {title}
+        </span>
+        <span className="mt-1 block text-[12px] leading-snug italic text-muted-foreground">
+          {descriptor}
+        </span>
       </span>
     </Link>
   );

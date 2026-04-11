@@ -82,6 +82,7 @@ export default async function Page() {
                 slug={getSectionHref(section)}
                 count={sectionCounts[section]}
                 accentColor={meta.accentColor}
+                iconSrc={meta.iconSrc}
               />
             );
           })}

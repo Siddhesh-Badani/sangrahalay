@@ -17,6 +17,7 @@ export default async function KathaPage() {
         description={meta.listingDescription}
         count={entries.length}
         accentColor={meta.accentColor}
+        iconSrc={meta.iconSrc}
       />
 
       <section className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">

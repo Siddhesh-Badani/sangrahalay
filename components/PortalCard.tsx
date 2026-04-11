@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { SECTIONS, type Section } from "@/lib/content";
@@ -9,6 +10,7 @@ type PortalCardProps = {
   slug: string;
   count: number;
   accentColor: string;
+  iconSrc: string;
 };
 
 function getPortalNumber(slug: string) {
@@ -29,15 +31,26 @@ export function PortalCard({
   slug,
   count,
   accentColor,
+  iconSrc,
 }: PortalCardProps) {
   return (
     <article
       className="group border border-border border-t-5 bg-background p-6 transition-colors duration-200 ease-out hover:bg-secondary md:p-7"
       style={{ borderTopColor: accentColor }}
     >
-      <p className="mb-2 font-mono text-xs text-muted-foreground opacity-50">
-        {getPortalNumber(slug)}
-      </p>
+      <div className="mb-3 flex items-center justify-between">
+        <p className="font-mono text-xs text-muted-foreground opacity-50">
+          {getPortalNumber(slug)}
+        </p>
+        <Image
+          src={iconSrc}
+          alt=""
+          width={48}
+          height={48}
+          className="h-12 w-12 object-contain opacity-70"
+          aria-hidden="true"
+        />
+      </div>
 
       <h2 className="text-2xl font-normal text-foreground">
         <Link href={slug}>{name}</Link>
