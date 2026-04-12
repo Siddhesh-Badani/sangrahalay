@@ -3,6 +3,7 @@ import { sahitya, alegreya } from "./fonts";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteNavbar } from "@/components/site-navbar";
 import ArchiveBackground from "@/components/archive-background";
+import { Analytics } from "@vercel/analytics/next";
 
 export default function RootLayout({
   children,
@@ -29,6 +30,7 @@ export default function RootLayout({
             {children}
             </ArchiveBackground>
           </ThemeProvider>
+          <Analytics />
         </body>
       </html>
     </>
