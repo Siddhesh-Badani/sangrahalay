@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 import ClosingMark from "@/components/ClosingMark";
 import PortalCard from "@/components/PortalCard";
@@ -23,7 +24,52 @@ export default async function Page() {
 
   return (
     <main className="mx-auto max-w-6xl px-4">
-      <section className="pb-8 pt-4 md:pb-10 md:pt-3">
+      {/* ── Mobile hero: image + titles + scroll grouped and centered ── */}
+      <section className="flex h-svh items-center justify-center md:hidden">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <Image
+            src="/flower1.png"
+            alt="abstract illustration"
+            width={700}
+            height={700}
+            priority
+            className="max-h-[60vh] w-auto object-contain"
+          />
+
+          <div>
+            <p className="font-hindi text-4xl text-muted-foreground opacity-60">संग्रहालय</p>
+            <h1 className="mt-1 text-5xl font-normal tracking-[-0.02em] text-foreground">
+              Sangrahalay
+            </h1>
+          </div>
+
+          <div className="flex flex-col items-center gap-1 text-muted-foreground opacity-40">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em]">scroll</span>
+            <ChevronDown size={18} strokeWidth={1.5} className="animate-bounce" />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Mobile description: visible after scrolling past the hero ── */}
+      <section className="pb-8 pt-6 text-center md:hidden">
+        <p className="text-base font-bold italic text-muted-foreground">
+          What was Thought. What was Felt. What Remains.
+        </p>
+        <p className="mt-2 text-base text-muted-foreground">
+          This is Sangrahalay — a quiet space for reflection, story, memory and verse.
+        </p>
+
+        <p className="mt-2 text-base text-muted-foreground">
+          For a world that reads fast and forgets faster, writing collected not for attention, but
+          for permanence. Gathered with intention, held without urgency.
+        </p>
+        <p className="mt-5 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground opacity-60">
+          Est. {ARCHIVE_ESTABLISHED_YEAR}
+        </p>
+      </section>
+
+      {/* ── Desktop hero: unchanged ── */}
+      <section className="hidden pb-8 pt-4 md:block md:pb-10 md:pt-3">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center md:flex-row md:items-center md:gap-10 md:text-left">
           <div className="w-full md:w-1/2">
             <Image
@@ -49,9 +95,7 @@ export default async function Page() {
             </p>
 
             <p className="mt-2 text-base text-muted-foreground md:text-lg">
-              This is Sangrahalay... A quiet space for reflection, story, memory and verse. For a
-              world that reads fast and forgets faster, writing collected not for attention, but for
-              permanence. Gathered with intention, held without urgency.
+              This is Sangrahalay... A quiet space for reflection, story, memory and verse.
             </p>
 
             <p className="mt-2 text-base text-muted-foreground md:text-lg">
