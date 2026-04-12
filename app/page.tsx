@@ -33,7 +33,7 @@ export default async function Page() {
             width={700}
             height={700}
             priority
-            className="max-h-[60vh] w-auto object-contain"
+            className="max-h-[60vh] w-auto object-contain animate-breathe"
           />
 
           <div>
@@ -77,7 +77,7 @@ export default async function Page() {
               alt="abstract illustration"
               width={700}
               height={700}
-              className="h-auto w-full rounded-sm object-cover"
+              className="h-auto w-full rounded-sm object-cover animate-breathe"
             />
           </div>
 

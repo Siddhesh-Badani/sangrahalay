@@ -269,6 +269,20 @@ html.theme-fade-in::after {
   animation: theme-fade-in 700ms ease-out forwards;
 }
 
+@keyframes breathe {
+  0%   { transform: scale(1)     rotate(0.65deg); }
+  25%  { transform: scale(1.065) rotate(1.75deg); }
+  50%  { transform: scale(1.025)     rotate(0.65deg); }
+  75%  { transform: scale(1.065) rotate(-1.75deg); }
+  100% { transform: scale(1)     rotate(0.65deg); }
+}
+
+@layer utilities {
+  .animate-breathe {
+    animation: breathe 12s ease-in-out infinite;
+  }
+}
+
 @keyframes theme-fade-out {
   from {
     opacity: 0;
