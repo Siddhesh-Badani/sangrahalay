@@ -5,7 +5,7 @@ import {
 } from "@/lib/content";
 import Image from "next/image";
 
-type TextBlock = { type: "text"; content: string };
+type TextBlock = { type: "text"; content: string | React.ReactNode };
 type ImageBlock = { type: "image"; src: string; alt: string; caption?: string };
 type ContentBlock = TextBlock | ImageBlock;
 
@@ -29,6 +29,12 @@ const authorContent: ContentBlock[] = [
   },
   { type: "text", content: "That instinct never left." },
   {
+    type: "image",
+    src: "/first-book.png",
+    alt: "Image of my first book.",
+    caption: "My first book, created in second grade.",
+  },
+  {
     type: "text",
     content:
       "In eighth grade, a short story grew into a full novel called My Destiny. It happened because of Hillary Ma'am, my middle school teacher, who read my early writing and decided it was worth pushing further. What started as a few pages became something I could not stop writing. The book was never commercially published, but my parents made sure it became real. My father and mother, who have backed every creative instinct I have ever had without hesitation, connected me with Narendra Gandhi uncle, a family friend who runs a printing press. He printed it like a proper book. We held a launch. Friends came. Teachers came. Family came. I was fourteen. It was the most important thing that had ever happened to me.",
@@ -42,7 +48,31 @@ const authorContent: ContentBlock[] = [
   {
     type: "text",
     content:
-      "The sequel, Destiny Calling, came during COVID, released as an online version. Both are available to read here. I also made a short film around this time, which you can watch here.",
+      "The sequel, Destiny Calling, came during COVID, released as an online version. I also made a short film around this time.",
+  },
+  {
+    type: "text",
+    content: (
+      <>
+        In 2022, I completed designing a website for Siddhesh Publications where you can read both the books
+        (digital ebook version) and watch the short film, along with some other writings and projects. It also now houses some of the projects which I ideated but never wrote. You can check it out here:{" "}
+        <a
+          href="https://sites.google.com/view/siddheshpublications/home"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {" "}
+          https://sites.google.com/view/siddheshpublications/home
+        </a>
+        .
+      </>
+    ),
+  },
+  {
+    type: "image",
+    src: "/siddhesh-publications-website.png",
+    alt: "Siddhesh Publications Website.",
+    caption: "Siddhesh Publications Website, developed over 2020-2022.",
   },
   { type: "text", content: "After 2023, I stopped writing." },
   {
