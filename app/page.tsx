@@ -56,12 +56,13 @@ export default async function Page() {
           What was Thought. What was Felt. What Remains.
         </p>
         <p className="mt-2 text-base text-muted-foreground">
-          This is Sangrahalay — a quiet space for reflection, story, memory and verse.
+          A personal archive of writing. Gathered slowly, kept with care.
         </p>
 
         <p className="mt-2 text-base text-muted-foreground">
-          For a world that reads fast and forgets faster, writing collected not for attention, but
-          for permanence. Gathered with intention, held without urgency.
+          Some writing isn&apos;t meant to be consumed. It&apos;s meant to be kept. Sangrahalay is
+          that place. For reflections, stories, memoirs and verse. Without feeds, without metrics,
+          without noise.
         </p>
         <p className="mt-5 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground opacity-60">
           Est. {ARCHIVE_ESTABLISHED_YEAR}
@@ -95,12 +96,13 @@ export default async function Page() {
             </p>
 
             <p className="mt-2 text-base text-muted-foreground md:text-lg">
-              This is Sangrahalay... A quiet space for reflection, story, memory and verse.
+              A personal archive of writing. Gathered slowly, kept with care.
             </p>
 
             <p className="mt-2 text-base text-muted-foreground md:text-lg">
-              For a world that reads fast and forgets faster, writing collected not for attention,
-              but for permanence. Gathered with intention, held without urgency.
+              Some writing isn&apos;t meant to be consumed. It&apos;s meant to be kept. Sangrahalay
+              is that place. For reflections, stories, memoirs and verse. Without feeds, without
+              metrics, without noise.
             </p>
 
             <p className="mt-5 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground opacity-60">

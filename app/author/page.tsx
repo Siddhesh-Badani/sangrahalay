@@ -108,7 +108,7 @@ export default async function AuthorPage() {
           Author
         </p>
 
-        <h1 className="text-4xl font-normal text-foreground md:text-5xl">I am Siddhesh Badani.</h1>
+        <h1 className="text-4xl font-normal text-foreground md:text-5xl">Hi, Siddhesh this side...</h1>
 
         <hr className="my-8 border-border" />
 
