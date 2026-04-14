@@ -28,12 +28,12 @@ export default async function Page() {
       <section className="flex h-svh items-center justify-center md:hidden">
         <div className="flex flex-col items-center gap-4 text-center">
           <Image
-            src="/flower1.png"
+            src="/banyan.png"
             alt="abstract illustration"
             width={700}
             height={700}
             priority
-            className="max-h-[60vh] w-auto object-contain animate-breathe"
+            className="max-h-[60vh] w-auto object-contain"
           />
 
           <div>
@@ -74,11 +74,11 @@ export default async function Page() {
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center md:flex-row md:items-center md:gap-10 md:text-left">
           <div className="w-full md:w-1/2">
             <Image
-              src="/flower1.png"
+              src="/banyan.png"
               alt="abstract illustration"
               width={700}
               height={700}
-              className="h-auto w-full rounded-sm object-cover animate-breathe"
+              className="h-auto w-full rounded-sm object-cover"
             />
           </div>
 
